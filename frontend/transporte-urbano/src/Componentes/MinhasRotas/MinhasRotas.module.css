@@ -1,0 +1,85 @@
+.pagina {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 32px;
+  background-color: #e6f0f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.pagina h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #17405c;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.botoes {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.botoes button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.cadastrarRota {
+  background-color: #17405c;
+  color: #fff;
+}
+
+.buscar {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #0f6fa3;
+  color: #fff;
+}
+
+.buscar:disabled {
+  background-color: #93b7c8;
+  cursor: not-allowed;
+}
+
+.rota {
+  width: 280px;
+  border: 1px solid #c3d7e0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  background-color: #ffffff;
+}
+
+.lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.rota p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #2b4a5c;
+}
+
+.rotulo {
+  font-weight: bold;
+  color: #0f6fa3;
+}
+
+.erro {
+  color: #b3261e;
+  font-size: 14px;
+}
