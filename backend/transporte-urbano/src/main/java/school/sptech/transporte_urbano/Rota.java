@@ -3,6 +3,7 @@ package school.sptech.transporte_urbano;
 public class Rota {
 
     private Integer id;
+    private String origem;
     private String destino;
     private String estacaoInicial;
     private String estacaoFinal;
@@ -12,8 +13,9 @@ public class Rota {
     public Rota() {
     }
 
-    public Rota(Integer id, String destino, String estacaoInicial, String estacaoFinal, Integer duracaoMinutos, Integer qtdBaldeacoes) {
+    public Rota(Integer id, String origem, String destino, String estacaoInicial, String estacaoFinal, Integer duracaoMinutos, Integer qtdBaldeacoes) {
         this.id = id;
+        this.origem = origem;
         this.destino = destino;
         this.estacaoInicial = estacaoInicial;
         this.estacaoFinal = estacaoFinal;
@@ -27,6 +29,14 @@ public class Rota {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
     }
 
     public String getDestino() {

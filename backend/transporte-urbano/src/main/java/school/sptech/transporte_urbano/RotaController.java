@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/rotas")
+@CrossOrigin(origins = "http://localhost:5173")
 public class RotaController {
 
     private final JdbcTemplate jdbcTemplate;
@@ -46,6 +47,10 @@ public class RotaController {
     @PostMapping
     public ResponseEntity<Rota> criarRota(@RequestBody Rota rota) {
 
+        if (rota.getOrigem() == null || rota.getOrigem().isBlank()) {
+            return ResponseEntity.status(400).build();
+        }
+
         if (rota.getDestino() == null || rota.getDestino().isBlank()) {
             return ResponseEntity.status(400).build();
         }
@@ -66,19 +71,20 @@ public class RotaController {
             return ResponseEntity.status(400).build();
         }
 
-        String sql = "insert into rota (destino, estacaoInicial, estacaoFinal, duracaoMinutos, qtdBaldeacoes) " +
-                "values (?, ?, ?, ?, ?)";
+        String sql = "insert into rota (origem, destino, estacaoInicial, estacaoFinal, duracaoMinutos, qtdBaldeacoes) " +
+                "values (?, ?, ?, ?, ?, ?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(con -> {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            ps.setString(1, rota.getDestino());
-            ps.setString(2, rota.getEstacaoInicial());
-            ps.setString(3, rota.getEstacaoFinal());
-            ps.setInt(4, rota.getDuracaoMinutos());
-            ps.setInt(5, rota.getQtdBaldeacoes());
+            ps.setString(1, rota.getOrigem());
+            ps.setString(2, rota.getDestino());
+            ps.setString(3, rota.getEstacaoInicial());
+            ps.setString(4, rota.getEstacaoFinal());
+            ps.setInt(5, rota.getDuracaoMinutos());
+            ps.setInt(6, rota.getQtdBaldeacoes());
 
             return ps;
         }, keyHolder);
