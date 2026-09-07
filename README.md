@@ -47,5 +47,5 @@ Backend: `http://localhost:8080` | Frontend: `http://localhost:5173`
 
 Mais informações:
 
-* [Backend](./backend/README-back.md)
-* [Frontend](./frontend/README-front.md)
+* [Backend](./backend/README.md)
+* [Frontend](./frontend/README.md)
