@@ -51,23 +51,34 @@
   border-radius: 6px;
   font-size: 15px;
   cursor: pointer;
+  transition: background-color 0.15s;
 }
 
-.form button[type="submit"] {
+.salvar {
   background-color: #0f6fa3;
   color: #fff;
+  width: 100%;
+  height: 50px;
   margin-top: 4px;
 }
 
-.form button[type="submit"]:disabled {
+.salvar:hover {
+  background-color: #0c5a85;
+}
+
+.salvar:disabled {
   background-color: #93b7c8;
   cursor: not-allowed;
 }
 
-.form button[type="button"] {
+.minhasRotas {
   background-color: #17405c;
   color: #fff;
   align-self: flex-start;
+}
+
+.minhasRotas:hover {
+  background-color: #12324a;
 }
 
 .erro {

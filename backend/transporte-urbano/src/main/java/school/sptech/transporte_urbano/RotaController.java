@@ -1,6 +1,5 @@
 package school.sptech.transporte_urbano;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -28,20 +27,6 @@ public class RotaController {
         String sql = "select * from rota";
         List<Rota> rotas = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Rota.class));
         return ResponseEntity.status(200).body(rotas);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Rota> listarPorId(@PathVariable Integer id) {
-        String sql = "select * from rota where id = ?";
-
-        try {
-            Rota rota = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Rota.class), id);
-            return ResponseEntity.status(200).body(rota);
-        }
-
-        catch (EmptyResultDataAccessException e) {
-            return ResponseEntity.status(404).build();
-        }
     }
 
     @PostMapping
@@ -92,5 +77,24 @@ public class RotaController {
         Integer idGerado = keyHolder.getKeyAs(Integer.class);
         rota.setId(idGerado);
         return ResponseEntity.status(201).body(rota);
+    }
+
+    private Boolean existById(Integer id) {
+        String sql = "select count(*) from rota where id = ?";
+        Integer qtdId = jdbcTemplate.queryForObject(sql, Integer.class, id);
+        Boolean idExiste = qtdId == 1;
+        return idExiste;
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable("id") Integer id) {
+
+        if (!existById(id)) {
+            return ResponseEntity.status(404).build();
+        }
+
+        String sql = "delete from rota where id = ?";
+        jdbcTemplate.update(sql, id);
+        return ResponseEntity.status(204).build();
     }
 }

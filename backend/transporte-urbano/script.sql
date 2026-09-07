@@ -6,7 +6,7 @@ CREATE TABLE if not exists rota (
     estacaoFinal VARCHAR(100) NOT NULL,
     duracaoMinutos INT NOT NULL,
     qtdBaldeacoes INT NOT NULL
-);
+    );
 
 INSERT INTO rota (origem, destino, estacaoInicial, estacaoFinal, duracaoMinutos, qtdBaldeacoes) VALUES
     ('Casa', 'Faculdade', 'Vila Prudente', 'Consolação', 35, 1),

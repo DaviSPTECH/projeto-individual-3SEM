@@ -3,22 +3,22 @@ import styles from "./Cadastro.module.css";
 import mensagemDeErro from "../Erros";
 
 function Cadastro({ irParaLista }) {
-  const [origem, setOrigem] = useState("");
-  const [destino, setDestino] = useState("");
-  const [estacaoInicial, setEstacaoInicial] = useState("");
-  const [estacaoFinal, setEstacaoFinal] = useState("");
-  const [duracaoMinutos, setDuracaoMinutos] = useState("");
-  const [qtdBaldeacoes, setQtdBaldeacoes] = useState("");
-  const [carregando, setCarregando] = useState(false);
-  const [erro, setErro] = useState(null);
-  const [sucesso, setSucesso] = useState(false);
+  const [origem, setOrigem] = useState("")
+  const [destino, setDestino] = useState("")
+  const [estacaoInicial, setEstacaoInicial] = useState("")
+  const [estacaoFinal, setEstacaoFinal] = useState("")
+  const [duracaoMinutos, setDuracaoMinutos] = useState("")
+  const [qtdBaldeacoes, setQtdBaldeacoes] = useState("")
+  const [carregando, setCarregando] = useState(false)
+  const [erro, setErro] = useState(null)
+  const [sucesso, setSucesso] = useState(false)
 
   async function cadastrar(e) {
     e.preventDefault(); 
 
-    setErro(null);
-    setSucesso(false);
-    setCarregando(true);
+    setErro(null)
+    setSucesso(false)
+    setCarregando(true)
 
     const rota = {
       origem: origem,
@@ -41,16 +41,18 @@ function Cadastro({ irParaLista }) {
       }
 
       setOrigem("");
-      setDestino("");
-      setEstacaoInicial("");
-      setEstacaoFinal("");
-      setDuracaoMinutos("");
-      setQtdBaldeacoes("");
-      setSucesso(true);
+      setDestino("")
+      setEstacaoInicial("")
+      setEstacaoFinal("")
+      setDuracaoMinutos("")
+      setQtdBaldeacoes("")
+      setSucesso(true)
+
     } catch (e) {
-      setErro(mensagemDeErro(e));
+      setErro(mensagemDeErro(e))
+
     } finally {
-      setCarregando(false);
+      setCarregando(false)
     }
   }
 
@@ -58,7 +60,7 @@ function Cadastro({ irParaLista }) {
     <form className={styles.form} onSubmit={cadastrar}>
       <div className={styles.cabecalho}>
         <h1>Cadastrar rota</h1>
-        <button type="button" onClick={irParaLista}>
+        <button type="button" className={styles.minhasRotas} onClick={irParaLista}>
           Minhas rotas
         </button>
       </div>
@@ -96,7 +98,7 @@ function Cadastro({ irParaLista }) {
       <div className={styles.linha}>
         <input
           type="number"
-          placeholder="Duração (min)"
+          placeholder="Duração (minutos)"
           min="1"
           value={duracaoMinutos}
           onChange={(e) => setDuracaoMinutos(e.target.value)}
@@ -112,7 +114,7 @@ function Cadastro({ irParaLista }) {
         />
       </div>
 
-      <button type="submit" disabled={carregando}>
+      <button type="submit" className={styles.salvar} disabled={carregando}>
         {carregando ? "Salvando..." : "Salvar"}
       </button>
 
@@ -122,4 +124,4 @@ function Cadastro({ irParaLista }) {
   );
 }
 
-export default Cadastro;
+export default Cadastro
